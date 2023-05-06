@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BudgetManagment.Domain.Enums
 {
-    internal class UserRole
+    public enum Role
     {
+        Admin = 1, User = 1
     }
 }

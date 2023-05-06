@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BudgetManagment.Domain.Commons;
+using System.Linq.Expressions;
 
-namespace BudgetManagment.DataAccess.Interfaces
+namespace BudgetManagment.DataAccess.Interfaces;
+
+public interface IGenericRepository<TSource> 
 {
-    internal class IGenericRepository
-    {
-    }
+   public ValueTask<TSource> InsertAsync(TSource entity);
+   public ValueTask<TSource> UpdateAsync(TSource entity);
+   public ValueTask<bool> DeleteAsync(TSource entity);
+   public ValueTask SaveChangesAsync();
+   public IQueryable<TSource> SelectAll(
+        Expression<Func<TSource, bool>> expression = null, string[] includes = null);
+   public ValueTask<TSource> SelectAsync(Expression<Func<TSource, bool>> expression, string[] includes = null);
 }
+
+
