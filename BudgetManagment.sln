@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetManagment.Domain", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetManagment.DataAccess", "src\BudgetManagment.DataAccess\BudgetManagment.DataAccess.csproj", "{4DA6FF74-9215-4E67-9705-B4DE5C3AF1FC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BudgetManagment.Service", "src\BudgetManagment.Service\BudgetManagment.Service.csproj", "{DA1A0E4D-5C54-4F33-965D-FA72DA602A40}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4DA6FF74-9215-4E67-9705-B4DE5C3AF1FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DA6FF74-9215-4E67-9705-B4DE5C3AF1FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DA6FF74-9215-4E67-9705-B4DE5C3AF1FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA1A0E4D-5C54-4F33-965D-FA72DA602A40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA1A0E4D-5C54-4F33-965D-FA72DA602A40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA1A0E4D-5C54-4F33-965D-FA72DA602A40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA1A0E4D-5C54-4F33-965D-FA72DA602A40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
