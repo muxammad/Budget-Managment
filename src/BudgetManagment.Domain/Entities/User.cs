@@ -1,4 +1,5 @@
 ﻿using BudgetManagment.Domain.Commons;
+using BudgetManagment.Domain.Enums;
 
 namespace BudgetManagment.Domain.Entities
 {
@@ -8,5 +9,7 @@ namespace BudgetManagment.Domain.Entities
         public string LastName { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string PasswordHash { get; set; } = string.Empty;
+        public UserRole UserRole { get; set; }
+
     }
 }
