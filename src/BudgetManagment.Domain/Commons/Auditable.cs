@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace BudgetManagment.Domain.Commons
 {
-    internal class Auditable
+    public class Auditable
     {
+        public int Id { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set;}
     }
 }
