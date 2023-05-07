@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BudgetManagment.Domain.Configurations;
+using BudgetManagment.Service.DTOs.Incomes;
 
 namespace BudgetManagment.Service.Interfaces
 {
-    internal class IIncomeService
+    public interface IIncomeService
     {
+        public Task<bool> DeleteAsync(int id);
+        public Task<IncomeForResultDto> GetByIdAsync(int id);
+        public Task<IncomeForResultDto> AddAsync(IncomeCreationDto dto);
+        public Task<IncomeForResultDto> UpdateAsync(int id, IncomeCreationDto dto);
+        public Task<IEnumerable<IncomeForResultDto>> GetAllAsync(PaginationParams @params);
     }
 }

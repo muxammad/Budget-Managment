@@ -1,6 +1,6 @@
 ﻿namespace BudgetManagment.Domain.Configurations
 {
-    public class PaginationParaps
+    public class PaginationParams
     {
         private const short _maxSize = 10;
         private const short _minSize = 1;

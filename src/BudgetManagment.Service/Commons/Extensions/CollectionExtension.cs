@@ -1,4 +1,6 @@
-﻿namespace BudgetManagment.Service.Commons.Extensions
+﻿using BudgetManagment.Domain.Configurations;
+
+namespace BudgetManagment.Service.Commons.Extensions
 {
     public static class CollectionExtension
     {
