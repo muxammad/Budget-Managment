@@ -11,7 +11,7 @@ namespace BudgetManagment.Service.Interfaces
     public interface IExpenseService
     {
         public Task<bool> DeleteAsync(int id);
-        public Task<ExpenseForResultDto> GetbyIdAsync(int id);
+        public Task<ExpenseForResultDto> GetByIdAsync(int id);
         public Task<ExpenseForResultDto> AddAsync(ExpenseCreationDto dto);
         public Task<ExpenseForResultDto> UpdateAsync(int id, ExpenseCreationDto dto);
         public Task<IEnumerable<ExpenseForResultDto>> GetAllAsync(PaginationParams @params);
