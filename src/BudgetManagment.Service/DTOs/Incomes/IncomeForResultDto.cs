@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BudgetManagment.Service.DTOs.User
+namespace BudgetManagment.Service.DTOs.Incomes
 {
-    internal class UserCreationDto
+    internal class IncomeForResultDto
     {
     }
 }
