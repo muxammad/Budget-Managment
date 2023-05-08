@@ -25,6 +25,8 @@ namespace BudgetManagment.DataAccess.Repositories
         {
             var existEntity = await this.dbSet.FirstOrDefaultAsync(t => t.Id.Equals(entity.Id));
             if (existEntity is null) return false;
+
+           this.dbSet.Remove(existEntity);
             return true;
         }
         /// <summary>
@@ -34,7 +36,7 @@ namespace BudgetManagment.DataAccess.Repositories
         /// <returns></returns>
         public async ValueTask<TEntity> InsertAsync(TEntity entity)
         => (await this.dbSet.AddAsync(entity)).Entity;
-        public async ValueTask SaveChangesAsync()
+        public async ValueTask SaveAsync()
         => await dbContext.SaveChangesAsync();
 
         /// <summary>

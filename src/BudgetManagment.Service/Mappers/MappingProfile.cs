@@ -18,7 +18,7 @@ namespace BudgetManagment.Service.Mappers
             CreateMap<Expense, ExpenseForResultDto>().ReverseMap();
             //Income
             CreateMap<Income, IncomeCreationDto>().ReverseMap();
-            CreateMap<Income, IncomeForResultDtod>().ReverseMap();
+            CreateMap<Income, IncomeForResultDto>().ReverseMap();
         }
     }
 }

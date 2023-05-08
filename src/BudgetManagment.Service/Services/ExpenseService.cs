@@ -6,12 +6,6 @@ using BudgetManagment.Service.Commons.Exceptions;
 using BudgetManagment.Service.Commons.Extensions;
 using BudgetManagment.Service.DTOs.Expenses;
 using BudgetManagment.Service.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace BudgetManagment.Service.Services
 {
     public class ExpenseService : IExpenseService
@@ -38,10 +32,12 @@ namespace BudgetManagment.Service.Services
             {
                 var updated = await this.repository.UpdateAsync(expense);
                 updated.UpdatedAt = DateTime.UtcNow;
+                await this.repository.SaveAsync();
             }
 
             var mapped = this.mapper.Map<Expense>(dto);
             var inserted = await this.repository.InsertAsync(mapped);
+            await this.repository.SaveAsync();
 
             return this.mapper.Map<ExpenseForResultDto>(inserted);
         }
@@ -52,7 +48,10 @@ namespace BudgetManagment.Service.Services
             if (expense is null)
                 throw new CustomException(404, "Couldn't find expense for given id");
 
-            return await this.repository.DeleteAsync(expense);
+            var res = await this.repository.DeleteAsync(expense);
+            await this.repository.SaveAsync();
+
+            return res;
         }
 
         public async Task<IEnumerable<ExpenseForResultDto>> GetAllAsync(PaginationParams @params)
@@ -80,9 +79,10 @@ namespace BudgetManagment.Service.Services
                 throw new CustomException(404, "Couldn't find user for given id");
 
             var modified = this.mapper.Map(dto, expense);
-            modified.UpdatedAt = DateTime.UtcNow;
 
             var updated = await this.repository.UpdateAsync(modified);
+            updated.UpdatedAt = DateTime.UtcNow;
+            await this.repository.SaveAsync();
             return this.mapper.Map<ExpenseForResultDto>(updated);
         }
     }

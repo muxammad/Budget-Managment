@@ -34,10 +34,12 @@ namespace BudgetManagment.Service.Services
             {
                 var updated = await this.repository.UpdateAsync(income);
                 updated.UpdatedAt = DateTime.UtcNow;
+                await this.repository.SaveAsync();
             }
 
             var mapped = this.mapper.Map<Income>(dto);
             var inserted = await this.repository.InsertAsync(mapped);
+            await this.repository.SaveAsync();
 
             return this.mapper.Map<IncomeForResultDto>(inserted);
         }
@@ -48,7 +50,10 @@ namespace BudgetManagment.Service.Services
             if (income is null)
                 throw new CustomException(404, "Couldn't find income for given id");
 
-            return await this.repository.DeleteAsync(income);
+            var res = await this.repository.DeleteAsync(income);
+            await this.repository.SaveAsync();
+
+            return res;
         }
 
         public async Task<IEnumerable<IncomeForResultDto>> GetAllAsync(PaginationParams @params)
@@ -76,9 +81,11 @@ namespace BudgetManagment.Service.Services
                 throw new CustomException(404, "Couldn't find user for given id");
 
             var modified = this.mapper.Map(dto, income);
-            modified.UpdatedAt = DateTime.UtcNow;
 
             var updated = await this.repository.UpdateAsync(modified);
+            updated.UpdatedAt = DateTime.UtcNow;
+            await this.repository.SaveAsync();
+
             return this.mapper.Map<IncomeForResultDto>(updated);
         }
     }

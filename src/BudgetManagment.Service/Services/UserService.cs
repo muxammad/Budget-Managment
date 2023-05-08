@@ -29,6 +29,7 @@ namespace BudgetManagment.Service.Services
             mapped.CreatedAt = DateTime.UtcNow;
 
             var result = await this.repository.InsertAsync(mapped);
+            await this.repository.SaveAsync();
 
             return this.mapper.Map<UserForResultDto>(result);
         }
@@ -36,10 +37,13 @@ namespace BudgetManagment.Service.Services
         public async Task<bool> DeleteAsync(int id)
         {
             var user = await this.repository.SelectAsync(u => u.Id == id);
-            if (user is not null)
+            if (user is null)
                 throw new CustomException(404, "Couldn't find user for given id");
 
-            return await this.repository.DeleteAsync(user);
+
+            var res = await this.repository.DeleteAsync(user);
+            await this.repository.SaveAsync();
+            return res;
         }
 
         public async Task<IEnumerable<UserForResultDto>> GetAllAsync(PaginationParams @params)
@@ -68,6 +72,7 @@ namespace BudgetManagment.Service.Services
                 throw new CustomException(404, "Couldn't find user for given id");
 
             var modified = this.mapper.Map(dto, user);
+            await this.repository.SaveAsync();
             modified.UpdatedAt = DateTime.UtcNow;
 
             return this.mapper.Map<UserForResultDto>(modified);
